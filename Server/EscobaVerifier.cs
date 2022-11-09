@@ -1,10 +1,18 @@
 namespace Escoba;
 
 public class EscobaVerifier { 
+  private Point _points;
+  private bool _createdAtDeal;
   private List<List<Card>> _cardSubsets;
 
-  public EscobaVerifier(List<List<Card>> cardSubsets) {
+  public EscobaVerifier(bool createdAtDeal, List<List<Card>> cardSubsets, Point points = Point.Zero) {
     _cardSubsets = cardSubsets;
+    _createdAtDeal = createdAtDeal;
+    if (_createdAtDeal) {
+      DeterminePointsAtDeal();
+    } else {
+      _points = points;
+    }
   }
 
   public bool HasMultipleCardSubsetsThatAddUpTo15() {
@@ -19,6 +27,26 @@ public class EscobaVerifier {
     }
     return false;
   }
+
+  public void DeterminePoints() {
+    if (_createdAtDeal) {
+      DeterminePointsAtDeal();
+    } else {
+    }
+  }
+  public void DeterminePointsAtDeal() {
+    if (IsTwoEscobasAtDeal()) {
+      _points = Point.Two;
+    } else if (IsOneEscobaAtDeal()) {
+      _points = Point.One;
+    } else {
+      _points = Point.Zero;
+    }
+  }
+  public void DeterminePointsAfterPlay () {
+
+  }
+
   public bool IsOneEscobaAtDeal() {
     if (_cardSubsets.Count == 1 && _cardSubsets[0].Count == 4) {
       return true;
@@ -45,5 +73,11 @@ public class EscobaVerifier {
 
   public List<List<Card>> GetCardSubsets() {
     return _cardSubsets;
+  }
+  public Point GetPoints() {
+    return _points;
+  }
+  public bool WasCreatedAtDeal() {
+    return _createdAtDeal;
   }
 }

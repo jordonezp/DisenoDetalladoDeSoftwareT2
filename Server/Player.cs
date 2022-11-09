@@ -32,8 +32,12 @@ public class Player {
     _cardsClaimedRound.ClearCards();
   }
 
-  public void AddPoints(int n) {
-    _points += n;
+  public void AddPoints(Point points) {
+    if (points == Point.Two) {
+      _points += 2;
+    } else if (points == Point.One) {
+      _points += 1;
+    }
   }
   public int GetPoints() {
     return _points;
