@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class View {
   private InputHandler _inputHandler;

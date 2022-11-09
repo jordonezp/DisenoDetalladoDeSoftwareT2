@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Server/Server.csproj",
-      "projectName": "Server",
-      "projectPath": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Server/Server.csproj",
+      "projectUniqueName": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/Servidor.csproj",
+      "projectName": "Servidor",
+      "projectPath": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/Servidor.csproj",
       "packagesPath": "/home/jorge/.nuget/packages/",
-      "outputPath": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Server/obj/",
+      "outputPath": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/jorge/.nuget/NuGet/NuGet.Config"

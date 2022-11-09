@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class Round {
   private Deck _deck;

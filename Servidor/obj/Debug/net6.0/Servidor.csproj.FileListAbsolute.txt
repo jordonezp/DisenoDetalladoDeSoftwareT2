@@ -1,0 +1,15 @@
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/Servidor.csproj.AssemblyReference.cache
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/Servidor.GeneratedMSBuildEditorConfig.editorconfig
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/Servidor.AssemblyInfoInputs.cache
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/Servidor.AssemblyInfo.cs
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/Servidor.csproj.CoreCompileInputs.cache
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/bin/Debug/net6.0/Servidor
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/bin/Debug/net6.0/Servidor.deps.json
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/bin/Debug/net6.0/Servidor.runtimeconfig.json
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/bin/Debug/net6.0/Servidor.dll
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/bin/Debug/net6.0/Servidor.pdb
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/Servidor.dll
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/refint/Servidor.dll
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/Servidor.pdb
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/Servidor.genruntimeconfig.cache
+/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/obj/Debug/net6.0/ref/Servidor.dll

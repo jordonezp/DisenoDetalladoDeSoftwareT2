@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class EscobaVerifier { 
   private List<List<Card>> _cardSubsets;

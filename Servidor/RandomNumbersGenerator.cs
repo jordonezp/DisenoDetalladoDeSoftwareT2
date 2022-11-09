@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public static class RandomNumbersGenerator {
   // RandomSeed = 48: two Escobas at initial deal

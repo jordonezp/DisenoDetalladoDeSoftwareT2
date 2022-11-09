@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class Game {
   private int _round;

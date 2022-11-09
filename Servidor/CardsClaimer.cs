@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class CardsClaimer { 
   private Player _player;

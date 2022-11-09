@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class PointsAssigner { 
   private View _view;

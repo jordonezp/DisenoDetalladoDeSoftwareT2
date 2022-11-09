@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class Player { 
   private Hand _hand;

@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Server/1.0.0": {
+      "Servidor/1.0.0": {
         "runtime": {
-          "Server.dll": {}
+          "Servidor.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Server/1.0.0": {
+    "Servidor/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
