@@ -1,13 +1,26 @@
+using Xunit;
+using Servidor;
+
 namespace Servidor.Tests;
 
-using xUnit;
-using Escoba;
+public class CardTests {
 
-public class UnitTest1
-{
-    [Fact]
-    public void Test1()
-    {
+  [Fact]
+  public void GetValue_ReturnsCardValue(){
+    Value expectedValue = Value.Cinco;
 
-    }
+    Card card = new Card(Suit.Oro, Value.Cinco);
+
+    Assert.Equal((int)expectedValue, (int)card.GetValue());
+  } 
+
+  [Fact]
+  public void GetSuit_ReturnsCardSuit(){
+    Suit expectedSuit = Suit.Oro;
+
+    Card card = new Card(Suit.Oro, Value.Cinco);
+
+    Assert.Equal(expectedSuit, card.GetSuit());
+  } 
+
 }

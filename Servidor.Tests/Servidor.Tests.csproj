@@ -21,4 +21,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+      <ProjectReference Include="..\Servidor\Servidor.csproj" />
+    </ItemGroup>
+
 </Project>
