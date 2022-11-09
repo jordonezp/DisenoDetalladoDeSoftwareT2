@@ -49,9 +49,9 @@ public class Round {
     List<List<Card>> cardSubsetsThatAddUpTo15 = _cardsOnTableCenter.GetCardSubsetsThatAddUpTo15();
     EscobaVerifier escobaVerifier = new EscobaVerifier(cardSubsetsThatAddUpTo15);
     if (escobaVerifier.IsOneEscobaAtDeal()) {
-      Game.ClaimSubsets(EscobaEvaluation.Single, _players[_whoDeals], _cardsOnTableCenter, escobaVerifier.GetCardSubsets());
+      Game.ClaimSubsets(Point.One, _players[_whoDeals], _cardsOnTableCenter, escobaVerifier.GetCardSubsets());
     } else if (escobaVerifier.IsTwoEscobasAtDeal()) {
-      Game.ClaimSubsets(EscobaEvaluation.Double, _players[_whoDeals], _cardsOnTableCenter, escobaVerifier.GetCardSubsets());
+      Game.ClaimSubsets(Point.Two, _players[_whoDeals], _cardsOnTableCenter, escobaVerifier.GetCardSubsets());
     }
   }
 
@@ -97,7 +97,7 @@ public class Round {
   public void EndRound() {
     _view.PrintRoundEnd(_players[_lastPlayerToHaveClaimedCards]);
     List<List<Card>> cardsClaimed = new List<List<Card>>() {_cardsOnTableCenter.CopyCards()};
-    Game.ClaimSubsets(EscobaEvaluation.None, _players[_whoDeals], _cardsOnTableCenter, cardsClaimed);
+    Game.ClaimSubsets(Point.Zero, _players[_whoDeals], _cardsOnTableCenter, cardsClaimed);
     _players = _pointsAssigner.AssignPointsAtRoundEnd(_players);
     _view.PrintRoundResults(_players);
   }

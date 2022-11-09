@@ -80,28 +80,21 @@ public class Game {
     }
   }
 
-  public static void ClaimSubsets(EscobaEvaluation escobaEvaluation, Player player, CardsOnTableCenter cardsOnTableCenter, List<List<Card>> cardSubsets) {
-    AddEscobaPoint(escobaEvaluation, player);
-    if (escobaEvaluation == EscobaEvaluation.Double) {
+  public static void ClaimSubsets(Point points, Player player, CardsOnTableCenter cardsOnTableCenter, List<List<Card>> cardSubsets) {
+    player.AddPoints(points);
+    if (points == Point.Two) {
       foreach(List<Card> subset in cardSubsets) {
-        ClaimCards(player, escobaEvaluation, cardsOnTableCenter, subset);
+        ClaimCards(player, points, cardsOnTableCenter, subset);
       }
     } else {
-      ClaimCards(player, escobaEvaluation, cardsOnTableCenter, cardSubsets[0]);
+      ClaimCards(player, points, cardsOnTableCenter, cardSubsets[0]);
     }
   }
-  public static void ClaimCards(Player player, EscobaEvaluation escobaEvaluation, CardsOnTableCenter cardsOnTableCenter, List<Card> cards) {
+  public static void ClaimCards(Player player, Point point, CardsOnTableCenter cardsOnTableCenter, List<Card> cards) {
     View view = new View();
-    view.PrintCardsClaimed(escobaEvaluation, cards);
+    view.PrintCardsClaimed(point, cards);
     player.ClaimCards(cards);
     RemoveCards(cardsOnTableCenter, cards);
-  }
-  public static void AddEscobaPoint(EscobaEvaluation escobaEvaluation, Player player) {
-    if (escobaEvaluation == EscobaEvaluation.Double) {
-      player.AddPoints(2);
-    } else if (escobaEvaluation == EscobaEvaluation.Single) {
-      player.AddPoints(1);
-    }
   }
   public static void RemoveCards(CardsOnTableCenter cardsOnTableCenter, List<Card> cardsClaimed) {
     foreach(Card card in cardsClaimed) {

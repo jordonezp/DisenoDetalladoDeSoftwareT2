@@ -52,8 +52,8 @@ public class View {
     int choice = _inputHandler.HandleInput(HandCardsCount);
     return choice;
   }
-  public void PrintCardsClaimed(EscobaEvaluation escobaEvaluation, List<Card> cards) {
-    if (!(escobaEvaluation == EscobaEvaluation.None)) {
+  public void PrintCardsClaimed(Point point, List<Card> cards) {
+    if (!(point == Point.Zero)) {
       PrintEscoba();
     }
     Console.WriteLine($"You've claimed the following cards: {CardsCollection.ConvertCardsToDisplayFormat(cards)}");
