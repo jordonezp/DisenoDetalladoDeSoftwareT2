@@ -80,26 +80,4 @@ public class Game {
     }
   }
 
-  public static void ClaimSubsets(Point points, Player player, CardsOnTableCenter cardsOnTableCenter, List<List<Card>> cardSubsets) {
-    player.AddPoints(points);
-    if (points == Point.Two) {
-      foreach(List<Card> subset in cardSubsets) {
-        ClaimCards(player, points, cardsOnTableCenter, subset);
-      }
-    } else {
-      ClaimCards(player, points, cardsOnTableCenter, cardSubsets[0]);
-    }
-  }
-  public static void ClaimCards(Player player, Point point, CardsOnTableCenter cardsOnTableCenter, List<Card> cards) {
-    View view = new View();
-    view.PrintCardsClaimed(point, cards);
-    player.ClaimCards(cards);
-    RemoveCards(cardsOnTableCenter, cards);
-  }
-  public static void RemoveCards(CardsOnTableCenter cardsOnTableCenter, List<Card> cardsClaimed) {
-    foreach(Card card in cardsClaimed) {
-      cardsOnTableCenter.RemoveCard(card);
-    }
-  }
-
 }

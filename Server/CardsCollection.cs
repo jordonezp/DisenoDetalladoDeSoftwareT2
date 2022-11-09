@@ -8,7 +8,7 @@ public class CardsCollection {
   }
 
   public void TakeCards(int numberOfCards, CardsCollection cardsCollection) {
-    AddCardList(cardsCollection.DrawCards(numberOfCards));
+    AppendCardList(cardsCollection.DrawCards(numberOfCards));
   }
   public List<Card> DrawCards(int numberOfCards) {
     List<Card> cardsDrawn = new List<Card>();
@@ -19,10 +19,10 @@ public class CardsCollection {
     }
     return cardsDrawn;
   }
-  public void AddCardList(List<Card> cards) {
+  public void AppendCardList(List<Card> cards) {
     Cards.AddRange(cards);
   }
-  public void AddCard(Card card) {
+  public void AppendCard(Card card) {
     Cards.Add(card);
   }
   public Card TakeCard(int index) {

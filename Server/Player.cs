@@ -60,7 +60,7 @@ public class Player {
   }
 
   public void ClaimCards(List<Card> cards) {
-    _cardsClaimedRound.AddCardList(cards);
+    _cardsClaimedRound.AppendCardList(cards);
   }
   public Card TakeCard(int choice) {
     return _hand.TakeCard(choice);

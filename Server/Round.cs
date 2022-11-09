@@ -46,12 +46,11 @@ public class Round {
     _cardsOnTableCenter.TakeCards(4, _deck);
   }
   public void VerifyIfPlayerClaimsCardsOnDeal() {
-    List<List<Card>> cardSubsetsThatAddUpTo15 = _cardsOnTableCenter.GetCardSubsetsThatAddUpTo15();
-    EscobaVerifier escobaVerifier = new EscobaVerifier(cardSubsetsThatAddUpTo15);
-    if (escobaVerifier.IsOneEscobaAtDeal()) {
-      Game.ClaimSubsets(Point.One, _players[_whoDeals], _cardsOnTableCenter, escobaVerifier.GetCardSubsets());
-    } else if (escobaVerifier.IsTwoEscobasAtDeal()) {
-      Game.ClaimSubsets(Point.Two, _players[_whoDeals], _cardsOnTableCenter, escobaVerifier.GetCardSubsets());
+    List<List<Card>> cardSubsets = _cardsOnTableCenter.GetCardSubsetsThatAddUpTo15();
+    Point point = EscobaVerifier.DeterminePointsAtDeal(cardSubsets);
+    CardsClaimer cardsClaimer = new CardsClaimer(point, _players[_whoDeals], _cardsOnTableCenter, cardSubsets);
+    if (!(point == Point.Zero)) {
+      UpdateCardsData(cardsClaimer);
     }
   }
 
@@ -96,10 +95,19 @@ public class Round {
 
   public void EndRound() {
     _view.PrintRoundEnd(_players[_lastPlayerToHaveClaimedCards]);
-    List<List<Card>> cardsClaimed = new List<List<Card>>() {_cardsOnTableCenter.CopyCards()};
-    Game.ClaimSubsets(Point.Zero, _players[_whoDeals], _cardsOnTableCenter, cardsClaimed);
-    _players = _pointsAssigner.AssignPointsAtRoundEnd(_players);
+    List<Card> cards = _cardsOnTableCenter.CopyCards();
+    Point point = EscobaVerifier.DetermineRoundEndPoints(_cardsOnTableCenter, cards);
+    UpdateGame(point, cards);
     _view.PrintRoundResults(_players);
   }
+  public void UpdateGame(Point point, List<Card> cards) {
+    CardsClaimer cardsClaimer = new CardsClaimer(point, _players[_whoDeals], _cardsOnTableCenter, new List<List<Card>>() {cards});
+    UpdateCardsData(cardsClaimer);
+    _players = _pointsAssigner.AssignPointsAtRoundEnd(_players);
+  }
+  public void UpdateCardsData(CardsClaimer cardsClaimer) {
+    _players[_lastPlayerToHaveClaimedCards] = cardsClaimer.ClaimCardSubsets(); 
+    _cardsOnTableCenter = cardsClaimer.RemoveCardSubsets();
+  } 
 
 }
