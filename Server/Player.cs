@@ -59,7 +59,7 @@ public class Player {
     return false;
   }
 
-  public void ClaimCards(List<Card> cards) {
+  public void Claim(List<Card> cards) {
     _cardsClaimedRound.AppendCardList(cards);
   }
   public Card TakeCard(int choice) {

@@ -52,12 +52,6 @@ public class View {
     int choice = _inputHandler.HandleInput(HandCardsCount);
     return choice;
   }
-  public void PrintCardsClaimed(Point point, List<Card> cards) {
-    if (!(point == Point.Zero)) {
-      PrintEscoba();
-    }
-    Console.WriteLine($"You've claimed the following cards: {CardsCollection.ConvertCardsToDisplayFormat(cards)}");
-  }
   public int PrintChoseValidSubset(List<List<Card>> subsetsThatAddUpTo15) {
     int validSubsetsCount = subsetsThatAddUpTo15.Count;
     Console.WriteLine($"\nThere are {validSubsetsCount} valid card subsets:");
@@ -71,6 +65,12 @@ public class View {
     for(int i = 0; i < subsetsThatAddUpTo15.Count; i++) {
       Console.WriteLine($"{i}. {CardsCollection.ConvertCardsToDisplayFormat(subsetsThatAddUpTo15[i])}");
     }
+  }
+  public void PrintCardsClaimed(Point point, List<Card> cards) {
+    if (!(point == Point.Zero)) {
+      PrintEscoba();
+    }
+    Console.WriteLine($"You've claimed the following cards: {CardsCollection.ConvertCardsToDisplayFormat(cards)}");
   }
 
   public void PrintGameStart(Player player) {
@@ -101,6 +101,7 @@ public class View {
   public void PrintMostGoldPoint(Player player) {
     Console.WriteLine($"{player} get's a point for having the most gold");
   }
+
   public void PrintEscoba() {
     Console.WriteLine($"Escoba! *********************************************************************"); 
   }

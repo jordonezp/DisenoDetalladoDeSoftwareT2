@@ -19,31 +19,31 @@ public class CardsClaimer {
     _player.AddPoints(_points);
     if (_points == Point.Two) {
       foreach(List<Card> subset in _cardsSubsets) {
-        ClaimCards(subset);
+        Claim(subset);
       }
     } else {
-      ClaimCards(_cardsSubsets[0]);
+      Claim(_cardsSubsets[0]);
     }
     return _player;
   }
-  public void ClaimCards(List<Card> cards) {
+  public void Claim(List<Card> cards) {
     _view.PrintCardsClaimed(_points, cards);
-    _player.ClaimCards(cards);
+    _player.Claim(cards);
   }
 
   public CardsOnTableCenter RemoveCardSubsets() {
     if (_points == Point.Two) {
       foreach(List<Card> subset in _cardsSubsets) {
-        RemoveCards(subset);
+        Remove(subset);
       }
     } else {
-      RemoveCards(_cardsSubsets[0]);
+      Remove(_cardsSubsets[0]);
     }
     return _cardsOnTableCenter;
   }
-  public void RemoveCards(List<Card> cardsClaimed) {
+  public void Remove(List<Card> cardsClaimed) {
     foreach(Card card in cardsClaimed) {
-      _cardsOnTableCenter.RemoveCard(card);
+      _cardsOnTableCenter.Remove(card);
     }
   }
 

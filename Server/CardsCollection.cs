@@ -30,7 +30,7 @@ public class CardsCollection {
     Cards.RemoveAt(index); 
     return card;
   }
-  public void RemoveCard(Card card) {
+  public void Remove(Card card) {
     Cards.Remove(card);
   }
 

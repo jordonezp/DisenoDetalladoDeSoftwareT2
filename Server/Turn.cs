@@ -18,7 +18,7 @@ public class Turn {
   public int PlayTurn() {
     int choice = _view.PrintBeginTurn(_player, _cardsOnTableCenter);
     EscobaVerifier escobaVerifier = PlayCard(choice);
-    EndTurn(escobaVerifier);
+    ClaimCards(escobaVerifier);
     _view.PrintSeparator();
     return _lastPlayerToHaveClaimedCards;
   }
@@ -31,15 +31,19 @@ public class Turn {
     return escobaVerifier;
   }
 
-  public void EndTurn(EscobaVerifier escobaVerifier) {
+  public void ClaimCards(EscobaVerifier escobaVerifier) {
+    List<List<Card>> cardSubsets = escobaVerifier.GetCardSubsets();
     if (escobaVerifier.HasCardSubsetsThatAddUpTo15()){
-      if (escobaVerifier.HasMultipleCardSubsetsThatAddUpTo15()) {
-        ChoseSubsetThatAddsUpTo15(escobaVerifier.GetCardSubsets());
-      } else {
-        ClaimCards(escobaVerifier.GetCardSubsets());
-      }
+      IsEscoba(escobaVerifier, cardSubsets);
     } else {
       _view.PrintNoCardsClaimed();
+    }
+  }
+  public void IsEscoba(EscobaVerifier escobaVerifier, List<List<Card>> cardSubsets) {
+    if (escobaVerifier.HasMultipleCardSubsetsThatAddUpTo15()) {
+        ChoseSubsetThatAddsUpTo15(cardSubsets);
+    } else {
+      ClaimCards(cardSubsets);
     }
   }
   public void ChoseSubsetThatAddsUpTo15(List<List<Card>> subsetsThatAddUpTo15) {
@@ -60,7 +64,5 @@ public class Turn {
   public void ChangeLastPlayerToHaveClaimedCards() {
     _lastPlayerToHaveClaimedCards = _player.GetNumber();
   }
-
-
 
 }

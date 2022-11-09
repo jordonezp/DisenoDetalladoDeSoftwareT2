@@ -11,13 +11,20 @@ public class Input {
   public static Input VerifyValidity(int max) {
     Input input = new Input();
     input.IsValid = int.TryParse(Console.ReadLine(), out input._value);
-    if(!input.IsValid || input._value < 0 || input._value >= max) {
+    if(input.IsValid && IsInRange(input._value, max)) {
+      input.IsValid = true;
+    } else {
       View.PrintInputError();
       input.IsValid = false;
-    } else {
-      input.IsValid = true;
     }
     return input;
+  }
+  public static bool IsInRange(int value, int max) {
+    if (value < 0 || value >= max) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   public int GetValue() {

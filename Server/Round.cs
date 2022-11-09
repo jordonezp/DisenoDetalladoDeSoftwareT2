@@ -34,7 +34,7 @@ public class Round {
   public void RoundPreparations() {
     DealCards();
     SetCardsOnTableCenter();
-    VerifyIfPlayerClaimsCardsOnDeal();
+    VerifyIfEscobasAtDeal();
     _view.PrintSeparator();
   }
   public void DealCards() {
@@ -45,7 +45,7 @@ public class Round {
   public void SetCardsOnTableCenter() {
     _cardsOnTableCenter.TakeCards(4, _deck);
   }
-  public void VerifyIfPlayerClaimsCardsOnDeal() {
+  public void VerifyIfEscobasAtDeal() {
     List<List<Card>> cardSubsets = _cardsOnTableCenter.GetCardSubsetsThatAddUpTo15();
     Point point = EscobaVerifier.DeterminePointsAtDeal(cardSubsets);
     CardsClaimer cardsClaimer = new CardsClaimer(point, _players[_whoDeals], _cardsOnTableCenter, cardSubsets);

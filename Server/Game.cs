@@ -1,7 +1,5 @@
 namespace Escoba;
 
-// TODO: methods take up to 3 methods
-
 public class Game {
   private int _round;
   private View _view;

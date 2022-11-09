@@ -47,4 +47,5 @@ public class CardsOnTableCenter : CardsCollection  {
     s += ConvertCardsToDisplayFormat(Cards);
     return s;
   }
+  
 }
