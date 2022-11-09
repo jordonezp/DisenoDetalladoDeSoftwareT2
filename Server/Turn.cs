@@ -48,13 +48,13 @@ public class Turn {
     ClaimCards(cardsClaimed);
   }
   public void ClaimCards(List<List<Card>> cardSubsets) {
-    EscobaVerifier escobaVerifier;
+    Point point;
     if (EscobaVerifier.IsEscoba(_cardsOnTableCenter, cardSubsets[0])) {
-      escobaVerifier = new EscobaVerifier(false, cardSubsets, Point.One);
+      point = Point.One;
     } else {
-      escobaVerifier = new EscobaVerifier(false, cardSubsets);
+      point = Point.Zero;
     }
-    Game.ClaimSubsets(_player, escobaVerifier, _cardsOnTableCenter);
+    Game.ClaimSubsets(point, _player, _cardsOnTableCenter, cardSubsets);
     ChangeLastPlayerToHaveClaimedCards();
   } 
   public void ChangeLastPlayerToHaveClaimedCards() {

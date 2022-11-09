@@ -84,17 +84,14 @@ public class Game {
     }
   }
 
-  public static void ClaimSubsets(Player player, EscobaVerifier escobaVerifier, CardsOnTableCenter cardsOnTableCenter) {
-    Point points = escobaVerifier.GetPoints();
+  public static void ClaimSubsets(Point points, Player player, CardsOnTableCenter cardsOnTableCenter, List<List<Card>> cardSubsets) {
     player.AddPoints(points);
     if (points == Point.Two) {
-      foreach(List<Card> subset in escobaVerifier.GetCardSubsets()) {
+      foreach(List<Card> subset in cardSubsets) {
         ClaimCards(player, points, cardsOnTableCenter, subset);
       }
-    } else if (points == Point.One) {
-      ClaimCards(player, points, cardsOnTableCenter, escobaVerifier.GetCardSubsets()[0]);
-    } else if (points == Point.Zero && !escobaVerifier.WasCreatedAtDeal()) {
-      ClaimCards(player, points, cardsOnTableCenter, escobaVerifier.GetCardSubsets()[0]);
+    } else {
+      ClaimCards(player, points, cardsOnTableCenter, cardSubsets[0]);
     }
   }
   public static void ClaimCards(Player player, Point point, CardsOnTableCenter cardsOnTableCenter, List<Card> cards) {
