@@ -3,8 +3,8 @@ namespace Servidor;
 public class PointsAssigner { 
   private View _view;
   
-  public PointsAssigner() {
-    _view = new View();
+  public PointsAssigner(View view) {
+    _view = view;
   }
 
   public List<Player> AssignPointsAtRoundEnd(List<Player> players) {

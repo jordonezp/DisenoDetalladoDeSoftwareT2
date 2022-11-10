@@ -25,7 +25,7 @@ public class CardsCollection {
   public void AppendCard(Card card) {
     Cards.Add(card);
   }
-  public Card TakeCard(int index) {
+  public Card Remove(int index) {
     Card card = Cards[index];
     Cards.RemoveAt(index); 
     return card;

@@ -1,15 +1,15 @@
 namespace Servidor;
 
 public class Player { 
+  private int _id;
   private Hand _hand;
-  private int _number;
   private int _points;
   private int _scoreToWin;
   private CardsCollection _cardsClaimedRound;
 
-  public Player(int number) {
+  public Player(int id) {
+    _id = id;
     _points = 0;
-    _number = number;
     _scoreToWin = 16; 
     _hand = new Hand();
     _cardsClaimedRound = new CardsCollection();
@@ -39,9 +39,6 @@ public class Player {
       _points += 1;
     }
   }
-  public int GetPoints() {
-    return _points;
-  }
 
   public bool HasSevenOfGold() {
     return _cardsClaimedRound.HasSevenOfGold();
@@ -62,22 +59,25 @@ public class Player {
   public void Claim(List<Card> cards) {
     _cardsClaimedRound.AppendCardList(cards);
   }
-  public Card TakeCard(int choice) {
-    return _hand.TakeCard(choice);
+  public Card RemoveFromHand(int choice) {
+    return _hand.Remove(choice);
   }
-  public void DrawCards(int numberOfCards, CardsCollection cardsCollection) {
-    _hand.TakeCards(numberOfCards, cardsCollection);
+  public void DrawCards(int numberOfCards, Deck deck) {
+    _hand.TakeCards(numberOfCards, deck);
   }
 
-  public int GetNumber() {
-    return _number;
+  public int GetPoints() {
+    return _points;
+  }
+  public int GetId() {
+    return _id;
   }
   public Hand GetHand() {
     return _hand;
   }
 
   public override string ToString() {
-    return $"Player {_number}";
+    return $"Player {_id}";
   }
   public string ToStringCardsClaimedRound() {
     return _cardsClaimedRound.ConvertCardsToString();

@@ -1,6 +1,6 @@
 namespace Servidor;
 
-public class CardsOnTableCenter : CardsCollection  {
+public class TableCards : CardsCollection  {
 
   public List<List<Card>> GetCardSubsetsThatAddUpTo15() {
     List<List<Card>> cardSubsets = GetCardSubsets();

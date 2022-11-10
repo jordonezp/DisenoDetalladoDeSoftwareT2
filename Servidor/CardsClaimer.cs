@@ -1,18 +1,18 @@
 namespace Servidor;
 
 public class CardsClaimer { 
-  private Player _player;
-  private Point _points;
   private View _view;
+  private Point _points;
+  private Player _player;
   private List<List<Card>> _cardsSubsets;
-  private CardsOnTableCenter _cardsOnTableCenter;
+  private TableCards _tableCards;
 
-  public CardsClaimer(Point points, Player player, CardsOnTableCenter cardsOnTableCenter, List<List<Card>> cardsSubsets) {
+  public CardsClaimer(TableCards tableCards, Player player, Point points, View view, List<List<Card>> cardsSubsets) {
+    _view = view;
     _player = player;
     _points = points;
-    _view = new View();
+    _tableCards = tableCards;
     _cardsSubsets = cardsSubsets;
-    _cardsOnTableCenter = cardsOnTableCenter;
   }
 
   public Player ClaimCardSubsets() {
@@ -31,7 +31,7 @@ public class CardsClaimer {
     _player.Claim(cards);
   }
 
-  public CardsOnTableCenter RemoveCardSubsets() {
+  public TableCards RemoveCardSubsets() {
     if (_points == Point.Two) {
       foreach(List<Card> subset in _cardsSubsets) {
         Remove(subset);
@@ -39,12 +39,16 @@ public class CardsClaimer {
     } else {
       Remove(_cardsSubsets[0]);
     }
-    return _cardsOnTableCenter;
+    return _tableCards;
   }
   public void Remove(List<Card> cardsClaimed) {
     foreach(Card card in cardsClaimed) {
-      _cardsOnTableCenter.Remove(card);
+      _tableCards.Remove(card);
     }
+  }
+
+  public int GetPlayerId() {
+    return _player.GetId();
   }
 
 }

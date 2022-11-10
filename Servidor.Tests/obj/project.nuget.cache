@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+gnw0k02/HXT9OWuP7Ub6b86VFe9EFQV+jN4Jb4j2ulLBJZ95Z+9QJsNp1S/nM5yrRGSj9SvZVtfr2ljsg2hkg==",
+  "dgSpecHash": "IqtvXIHEbbckeyza4BgLlR+KCS4ZvjJwG+O4fsTHg/Jq4yobqgoK85OsyBR2pBI5PRMknh3UbmQ9m2pw0qUF1w==",
   "success": true,
   "projectFilePath": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor.Tests/Servidor.Tests.csproj",
   "expectedPackageFiles": [
-    "/home/jorge/.nuget/packages/coverlet.collector/3.1.2/coverlet.collector.3.1.2.nupkg.sha512",
+    "/home/jorge/.nuget/packages/coverlet.collector/3.2.0/coverlet.collector.3.2.0.nupkg.sha512",
     "/home/jorge/.nuget/packages/microsoft.codecoverage/17.1.0/microsoft.codecoverage.17.1.0.nupkg.sha512",
     "/home/jorge/.nuget/packages/microsoft.csharp/4.0.1/microsoft.csharp.4.0.1.nupkg.sha512",
     "/home/jorge/.nuget/packages/microsoft.net.test.sdk/17.1.0/microsoft.net.test.sdk.17.1.0.nupkg.sha512",
