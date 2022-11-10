@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class EscobaVerifier { 
   private List<List<Card>> _cardSubsets;
@@ -20,24 +20,24 @@ public class EscobaVerifier {
     return false;
   }
   
-  public static Point DetermineTurnPoints(CardsOnTableCenter cardsOnTableCenter, List<List<Card>> cards) {
+  public static Point DetermineTurnPoints(TableCards tableCards, List<List<Card>> cards) {
     Point point;
-    if (IsEscobaOnTurn(cardsOnTableCenter, cards)) {
+    if (IsEscobaOnTurn(tableCards, cards)) {
       point = Point.One;
     } else {
       point = Point.Zero;
     }
     return point;
   }
-  public static bool IsEscobaOnTurn(CardsOnTableCenter cardsOnTableCenter, List<List<Card>> cards) {
-    if (cards[0].Count == cardsOnTableCenter.CountCards()) {
+  public static bool IsEscobaOnTurn(TableCards tableCards, List<List<Card>> cards) {
+    if (cards[0].Count == tableCards.CountCards()) {
       return true;
     }
     return false;
   }
-  public static Point DetermineRoundEndPoints(CardsOnTableCenter cardsOnTableCenter, List<Card> cards) {
+  public static Point DetermineRoundEndPoints(TableCards tableCards, List<Card> cards) {
     Point point;
-    if (cardsOnTableCenter.DoCardsAddUpTo15(cards)) {
+    if (tableCards.DoCardsAddUpTo15(cards)) {
       point = Point.One;
     } else {
       point = Point.Zero;

@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class Game {
   private int _round;
@@ -6,20 +6,21 @@ public class Game {
   private int _whoDeals;
   private int _whoPlays;
   private List<Player> _players;
-  private CardsOnTableCenter _cardsOnTableCenter;
+  private TableCards _tableCards;
 
   public Game() {
     _round = 1;
     _whoDeals = 0;
     _whoPlays = 1;
     _view = new View();
-    _cardsOnTableCenter = new CardsOnTableCenter();
-    _players = new List<Player>() {
-      new Player(0),
-      new Player(1),
-    };
+    _tableCards = new TableCards();
+    _players = new List<Player>() { new Player(), new Player()  };
   }
 
+  public void SimulateEscoba() {
+    _view.IsSimulated = true;
+    PlayEscoba();
+  }
   public void PlayEscoba() {
     _view.PrintGameStart(_players[_whoDeals]);
     while (!HasAnyPlayerWon()) {
@@ -40,7 +41,7 @@ public class Game {
 
   public void PlayRound() {
     _view.PrintRoundStart(_round, _players[_whoDeals]);
-    Round round = new Round(_whoDeals, _whoPlays, new Deck(), _cardsOnTableCenter, _players);
+    Round round = new Round(_whoDeals, _whoPlays, new Deck(), _tableCards, _view, _players);
     _players = round.PlayRound();
   }
 

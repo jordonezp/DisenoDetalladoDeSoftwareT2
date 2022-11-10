@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "coverlet.collector/3.1.2": {
+      "coverlet.collector/3.2.0": {
         "type": "package",
         "build": {
           "build/netstandard1.0/coverlet.collector.targets": {}
@@ -1802,17 +1802,28 @@
         "build": {
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
+      },
+      "Servidor/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Servidor.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Servidor.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "coverlet.collector/3.1.2": {
-      "sha512": "wuLDIDKD5XMt0A7lE31JPenT7QQwZPFkP5rRpdJeblyXZ9MGLI8rYjvm5fvAKln+2/X+4IxxQDxBtwdrqKNLZw==",
+    "coverlet.collector/3.2.0": {
+      "sha512": "xjY8xBigSeWIYs4I7DgUHqSNoGqnHi7Fv7/7RZD02rvZyG3hlsjnQKiVKVWKgr9kRKgmV+dEfu8KScvysiC0Wg==",
       "type": "package",
-      "path": "coverlet.collector/3.1.2",
+      "path": "coverlet.collector/3.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "build/netstandard1.0/Microsoft.Bcl.AsyncInterfaces.dll",
         "build/netstandard1.0/Microsoft.CSharp.dll",
         "build/netstandard1.0/Microsoft.DotNet.PlatformAbstractions.dll",
         "build/netstandard1.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
@@ -1840,6 +1851,7 @@
         "build/netstandard1.0/System.Reflection.Emit.dll",
         "build/netstandard1.0/System.Reflection.Metadata.dll",
         "build/netstandard1.0/System.Reflection.TypeExtensions.dll",
+        "build/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "build/netstandard1.0/System.Runtime.Serialization.Primitives.dll",
         "build/netstandard1.0/System.Text.RegularExpressions.dll",
         "build/netstandard1.0/System.Threading.Tasks.Extensions.dll",
@@ -1853,7 +1865,7 @@
         "build/netstandard1.0/coverlet.core.dll",
         "build/netstandard1.0/coverlet.core.pdb",
         "coverlet-icon.png",
-        "coverlet.collector.3.1.2.nupkg.sha512",
+        "coverlet.collector.3.2.0.nupkg.sha512",
         "coverlet.collector.nuspec"
       ]
     },
@@ -6098,12 +6110,18 @@
         "xunit.runner.visualstudio.2.4.3.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "Servidor/1.0.0": {
+      "type": "project",
+      "path": "../Servidor/Servidor.csproj",
+      "msbuildProject": "../Servidor/Servidor.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.NET.Test.Sdk >= 17.1.0",
-      "coverlet.collector >= 3.1.2",
+      "Servidor >= 1.0.0",
+      "coverlet.collector >= 3.2.0",
       "xunit >= 2.4.1",
       "xunit.runner.visualstudio >= 2.4.3"
     ]
@@ -6132,7 +6150,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/Servidor.csproj": {
+              "projectPath": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/Servidor.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -6153,7 +6175,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[3.1.2, )"
+            "version": "[3.2.0, )"
           },
           "xunit": {
             "target": "Package",

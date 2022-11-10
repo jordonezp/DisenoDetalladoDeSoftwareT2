@@ -1,4 +1,4 @@
-namespace Escoba;
+namespace Servidor;
 
 public class Round {
   private Deck _deck;
@@ -8,17 +8,17 @@ public class Round {
   private List<Player> _players;
   private int _lastPlayerToHaveClaimedCards;
   private PointsAssigner _pointsAssigner;
-  private CardsOnTableCenter _cardsOnTableCenter;
+  private TableCards _tableCards;
 
-  public Round(int whoDeals, int whoPlays, Deck deck, CardsOnTableCenter cardsOnTableCenter, List<Player> players) {
+  public Round(int whoDeals, int whoPlays, Deck deck, TableCards tableCards, View view, List<Player> players) {
     _deck = deck;
     _players = players;
-    _view = new View();
+    _view = view;
     _whoPlays = whoPlays;
     _whoDeals = whoDeals;
     _lastPlayerToHaveClaimedCards = 0;
     _pointsAssigner = new PointsAssigner();
-    _cardsOnTableCenter = cardsOnTableCenter;
+    _tableCards = tableCards;
   }
 
   public List<Player> PlayRound() {
@@ -43,12 +43,12 @@ public class Round {
     }
   }
   public void SetCardsOnTableCenter() {
-    _cardsOnTableCenter.TakeCards(4, _deck);
+    _tableCards.TakeCards(4, _deck);
   }
   public void VerifyIfEscobasAtDeal() {
-    List<List<Card>> cardSubsets = _cardsOnTableCenter.GetCardSubsetsThatAddUpTo15();
+    List<List<Card>> cardSubsets = _tableCards.GetCardSubsetsThatAddUpTo15();
     Point point = EscobaVerifier.DeterminePointsAtDeal(cardSubsets);
-    CardsClaimer cardsClaimer = new CardsClaimer(point, _players[_whoDeals], _cardsOnTableCenter, cardSubsets);
+    CardsClaimer cardsClaimer = new CardsClaimer(point, _players[_whoDeals], _tableCards, cardSubsets);
     if (!(point == Point.Zero)) {
       UpdateCardsData(cardsClaimer);
     }
@@ -76,7 +76,7 @@ public class Round {
 
   public void PlayTurn() {
     TurnPreparations();
-    Turn turn = new Turn(_lastPlayerToHaveClaimedCards, _whoPlays, _players[_whoPlays], _cardsOnTableCenter);
+    Turn turn = new Turn(_lastPlayerToHaveClaimedCards, _whoPlays, _players[_whoPlays], _view, _tableCards);
     _lastPlayerToHaveClaimedCards = turn.PlayTurn();
   }
   public void TurnPreparations() {
@@ -95,19 +95,19 @@ public class Round {
 
   public void EndRound() {
     _view.PrintRoundEnd(_players[_lastPlayerToHaveClaimedCards]);
-    List<Card> cards = _cardsOnTableCenter.CopyCards();
-    Point point = EscobaVerifier.DetermineRoundEndPoints(_cardsOnTableCenter, cards);
+    List<Card> cards = _tableCards.CopyCards();
+    Point point = EscobaVerifier.DetermineRoundEndPoints(_tableCards, cards);
     UpdateGame(point, cards);
     _view.PrintRoundResults(_players);
   }
   public void UpdateGame(Point point, List<Card> cards) {
-    CardsClaimer cardsClaimer = new CardsClaimer(point, _players[_whoDeals], _cardsOnTableCenter, new List<List<Card>>() {cards});
+    CardsClaimer cardsClaimer = new CardsClaimer(point, _players[_whoDeals], _tableCards, new List<List<Card>>() {cards});
     UpdateCardsData(cardsClaimer);
     _players = _pointsAssigner.AssignPointsAtRoundEnd(_players);
   }
   public void UpdateCardsData(CardsClaimer cardsClaimer) {
     _players[_lastPlayerToHaveClaimedCards] = cardsClaimer.ClaimCardSubsets(); 
-    _cardsOnTableCenter = cardsClaimer.RemoveCardSubsets();
+    _tableCards = cardsClaimer.RemoveCardSubsets();
   } 
 
 }

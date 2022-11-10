@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r0AOr7sMNPeELHpEAgIR1Xwm4jLu0iR7t35hJTvkHPeQuyzRhC7tISThht7FbB0NU0dbCB8E0RUR0te8ErF65Q==",
+  "dgSpecHash": "PWt3EMfLYsHBBIrwiFvXYUgofDhPKXS7CvpOB7r5fLCKNj6LcYo33CToNIdgZYmrlWyTOlrL7veSNoi5afwOSA==",
   "success": true,
-  "projectFilePath": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Server/Server.csproj",
+  "projectFilePath": "/home/jorge/Universidad/Diseño Detallado de Software IIC2113 2022-2/Tareas/T2/Servidor/Servidor.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

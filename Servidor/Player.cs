@@ -1,15 +1,17 @@
-namespace Escoba;
+namespace Servidor;
 
 public class Player { 
   private Hand _hand;
-  private int _number;
+  private int _id;
+  private static int _currentId = -1;
   private int _points;
   private int _scoreToWin;
   private CardsCollection _cardsClaimedRound;
 
-  public Player(int number) {
+  public Player() {
     _points = 0;
-    _number = number;
+    _currentId++;
+    _id = _currentId;
     _scoreToWin = 16; 
     _hand = new Hand();
     _cardsClaimedRound = new CardsCollection();
@@ -70,14 +72,14 @@ public class Player {
   }
 
   public int GetNumber() {
-    return _number;
+    return _id;
   }
   public Hand GetHand() {
     return _hand;
   }
 
   public override string ToString() {
-    return $"Player {_number}";
+    return $"Player {_id}";
   }
   public string ToStringCardsClaimedRound() {
     return _cardsClaimedRound.ConvertCardsToString();

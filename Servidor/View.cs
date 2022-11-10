@@ -1,9 +1,11 @@
-namespace Escoba;
+namespace Servidor;
 
 public class View {
+  public bool IsSimulated;
   private InputHandler _inputHandler;
 
   public View() {
+    IsSimulated = false;
     _inputHandler = new InputHandler();
   }
 
@@ -37,10 +39,10 @@ public class View {
     }
   }
 
-  public int PrintBeginTurn(Player player, CardsOnTableCenter cardsOnTableCenter) {
+  public int PrintBeginTurn(Player player, TableCards tableCards) {
     PrintSeparatorWithLineBreak();
     Console.WriteLine($"{player}'s turn!");
-    Console.WriteLine(cardsOnTableCenter);
+    Console.WriteLine(tableCards);
     Console.WriteLine(player.GetHand());
     int choice = PrintChoseCard(player);
     return choice;
@@ -49,7 +51,7 @@ public class View {
     int HandCardsCount = player.CountHandCards();
     Console.WriteLine("What card do you wish to play?");
     Console.WriteLine($"(Chose a card between 0 and {HandCardsCount - 1})");
-    int choice = _inputHandler.HandleInput(HandCardsCount);
+    int choice = ReadInput(HandCardsCount);
     return choice;
   }
   public int PrintChoseValidSubset(List<List<Card>> subsetsThatAddUpTo15) {
@@ -58,7 +60,7 @@ public class View {
     PrintValidSubsets(subsetsThatAddUpTo15);
     Console.WriteLine("What subset of cards do pick?");
     Console.WriteLine($"(Chose a subset between 0 and {validSubsetsCount - 1})");
-    int choice = _inputHandler.HandleInput(validSubsetsCount);
+    int choice = ReadInput(validSubsetsCount);
     return choice;
   }
   public void PrintValidSubsets(List<List<Card>> subsetsThatAddUpTo15) {
@@ -66,6 +68,13 @@ public class View {
       Console.WriteLine($"{i}. {CardsCollection.ConvertCardsToDisplayFormat(subsetsThatAddUpTo15[i])}");
     }
   }
+  public int ReadInput(int max) {
+    if (IsSimulated) {
+      return UserInputSimulator.Simulate(max);
+    }
+    return _inputHandler.HandleInput(max);
+  }
+
   public void PrintCardsClaimed(Point point, List<Card> cards) {
     if (!(point == Point.Zero)) {
       PrintEscoba();
