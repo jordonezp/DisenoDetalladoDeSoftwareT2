@@ -26,8 +26,8 @@ public class PointsAssigner {
   }
   public List<Player> AssignMostSevensPoint(List<Player> players) {
     Point point = Point.One;
-    int Player0SevensCount = players[0].CountNumberOfSevens();
-    int Player1SevensCount = players[1].CountNumberOfSevens();
+    int Player0SevensCount = players[0].CountSevensClaimedRound();
+    int Player1SevensCount = players[1].CountSevensClaimedRound();
     if(Player0SevensCount >= Player1SevensCount) {
       players[0].AddPoints(point);
       _view.PrintMostSevensPoint(players[0]);
@@ -54,8 +54,8 @@ public class PointsAssigner {
   }
   public List<Player> AssignMostGoldsPoint(List<Player> players) {
     Point point = Point.One;
-    int Player0GoldsCount = players[0].CountNumberOfGolds();
-    int Player1GoldsCount = players[1].CountNumberOfGolds();
+    int Player0GoldsCount = players[0].CountGoldsClaimedRound();
+    int Player1GoldsCount = players[1].CountGoldsClaimedRound();
     if(Player0GoldsCount >= Player1GoldsCount) {
       players[0].AddPoints(point);
       _view.PrintMostGoldPoint(players[0]);

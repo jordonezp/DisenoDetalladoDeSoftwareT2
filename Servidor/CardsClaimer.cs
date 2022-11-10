@@ -26,7 +26,7 @@ public class CardsClaimer {
     }
     return _player;
   }
-  public void Claim(List<Card> cards) {
+  private void Claim(List<Card> cards) {
     _view.PrintCardsClaimed(_points, cards);
     _player.Claim(cards);
   }
@@ -41,7 +41,7 @@ public class CardsClaimer {
     }
     return _tableCards;
   }
-  public void Remove(List<Card> cardsClaimed) {
+  private void Remove(List<Card> cardsClaimed) {
     foreach(Card card in cardsClaimed) {
       _tableCards.Remove(card);
     }

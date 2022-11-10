@@ -23,15 +23,15 @@ public class Turn {
     return _lastPlayerToHaveClaimedCards;
   }
 
-  public EscobaVerifier PlayCard(int choice) {
-    Card cardChosen = _player.TakeCard(choice);
+  private EscobaVerifier PlayCard(int choice) {
+    Card cardChosen = _player.TakeCardFromHand(choice);
     _tableCards.AppendCard(cardChosen);
     List<List<Card>> subsetsThatAddUpTo15 = _tableCards.GetCardSubsetsThatAddUpTo15();
     EscobaVerifier escobaVerifier = new EscobaVerifier(subsetsThatAddUpTo15);
     return escobaVerifier;
   }
 
-  public void ClaimCards(EscobaVerifier escobaVerifier) {
+  private void ClaimCards(EscobaVerifier escobaVerifier) {
     List<List<Card>> cardSubsets = escobaVerifier.GetCardSubsets();
     if (escobaVerifier.HasCardSubsetsThatAddUpTo15()){
       IsEscoba(escobaVerifier, cardSubsets);
@@ -39,30 +39,30 @@ public class Turn {
       _view.PrintNoCardsClaimed();
     }
   }
-  public void IsEscoba(EscobaVerifier escobaVerifier, List<List<Card>> cardSubsets) {
+  private void IsEscoba(EscobaVerifier escobaVerifier, List<List<Card>> cardSubsets) {
     if (escobaVerifier.HasMultipleCardSubsetsThatAddUpTo15()) {
         ChoseSubsetThatAddsUpTo15(cardSubsets);
     } else {
       ClaimCards(cardSubsets);
     }
   }
-  public void ChoseSubsetThatAddsUpTo15(List<List<Card>> subsetsThatAddUpTo15) {
+  private void ChoseSubsetThatAddsUpTo15(List<List<Card>> subsetsThatAddUpTo15) {
     int choice = _view.PrintChoseValidSubset(subsetsThatAddUpTo15);
     List<List<Card>> cardsClaimed = new List<List<Card>>() { subsetsThatAddUpTo15[choice] };
     ClaimCards(cardsClaimed);
   }
-  public void ClaimCards(List<List<Card>> cardSubsets) {
+  private void ClaimCards(List<List<Card>> cardSubsets) {
     Point point = EscobaVerifier.DetermineTurnPoints(_tableCards, cardSubsets);
     CardsClaimer cardsClaimer = new CardsClaimer(point, _player, _tableCards, cardSubsets);
     UpdateCardsData(cardsClaimer);
     ChangeLastPlayerToHaveClaimedCards();
   }
-  public void UpdateCardsData(CardsClaimer cardsClaimer) {
+  private void UpdateCardsData(CardsClaimer cardsClaimer) {
     _player = cardsClaimer.ClaimCardSubsets(); 
     _tableCards = cardsClaimer.RemoveCardSubsets();
   } 
-  public void ChangeLastPlayerToHaveClaimedCards() {
-    _lastPlayerToHaveClaimedCards = _player.GetNumber();
+  private void ChangeLastPlayerToHaveClaimedCards() {
+    _lastPlayerToHaveClaimedCards = _player.GetId();
   }
 
 }

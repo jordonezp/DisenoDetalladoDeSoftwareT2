@@ -24,14 +24,14 @@ public class View {
     PrintActualScore(players);
     PrintSeparator();
   }
-  public void PrintCardsClaimedRound(List<Player> players) {
+  private void PrintCardsClaimedRound(List<Player> players) {
     PrintSeparator();
     Console.WriteLine("Cards claimed this round:");
     for(int i = 0; i < players.Count; i++) {
       Console.WriteLine($"{players[i]}: {players[i].ToStringCardsClaimedRound()}");
     }
   }
-  public void PrintActualScore(List<Player> players) {
+  private void PrintActualScore(List<Player> players) {
     PrintSeparator();
     Console.WriteLine("Points up to this round:");
     for(int i = 0; i < players.Count; i++) {
@@ -48,7 +48,7 @@ public class View {
     return choice;
   }
   public int PrintChoseCard(Player player) {
-    int HandCardsCount = player.CountHandCards();
+    int HandCardsCount = player.CountCardsHand();
     Console.WriteLine("What card do you wish to play?");
     Console.WriteLine($"(Chose a card between 0 and {HandCardsCount - 1})");
     int choice = ReadInput(HandCardsCount);
@@ -63,12 +63,12 @@ public class View {
     int choice = ReadInput(validSubsetsCount);
     return choice;
   }
-  public void PrintValidSubsets(List<List<Card>> subsetsThatAddUpTo15) {
+  private void PrintValidSubsets(List<List<Card>> subsetsThatAddUpTo15) {
     for(int i = 0; i < subsetsThatAddUpTo15.Count; i++) {
       Console.WriteLine($"{i}. {CardsCollection.ConvertCardsToDisplayFormat(subsetsThatAddUpTo15[i])}");
     }
   }
-  public int ReadInput(int max) {
+  private int ReadInput(int max) {
     if (IsSimulated) {
       return UserInputSimulator.Simulate(max);
     }
@@ -111,7 +111,7 @@ public class View {
     Console.WriteLine($"{player} get's a point for having the most gold");
   }
 
-  public void PrintEscoba() {
+  private void PrintEscoba() {
     Console.WriteLine($"Escoba! *********************************************************************"); 
   }
   public void PrintNoCardsClaimed() {
@@ -124,7 +124,7 @@ public class View {
   public void PrintSeparator() {
     Console.WriteLine($"-----------------------------------------------------------------------------");
   }
-  public void PrintSeparatorWithLineBreak() {
+  private void PrintSeparatorWithLineBreak() {
     Console.WriteLine($"\n-----------------------------------------------------------------------------");
   }
   

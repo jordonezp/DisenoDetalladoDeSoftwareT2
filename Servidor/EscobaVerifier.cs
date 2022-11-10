@@ -29,7 +29,7 @@ public class EscobaVerifier {
     }
     return point;
   }
-  public static bool IsEscobaOnTurn(TableCards tableCards, List<List<Card>> cards) {
+  private static bool IsEscobaOnTurn(TableCards tableCards, List<List<Card>> cards) {
     if (cards[0].Count == tableCards.CountCards()) {
       return true;
     }
@@ -53,20 +53,20 @@ public class EscobaVerifier {
       return Point.Zero;
     }
   }
-  public static bool IsOneEscobaAtDeal(List<List<Card>> cardSubsets) {
+  private static bool IsOneEscobaAtDeal(List<List<Card>> cardSubsets) {
     if (cardSubsets.Count == 1 && cardSubsets[0].Count == 4) {
       return true;
     }
     return false;
   }
-  public static bool IsTwoEscobasAtDeal(List<List<Card>> cardSubsets) {
+  private static bool IsTwoEscobasAtDeal(List<List<Card>> cardSubsets) {
     if (cardSubsets.Count == 2 && !VerifyIfCardSubsetsShareCards(cardSubsets)) {
       return true;
     }
     return false;
   }
   // Method based on code from: https://stackoverflow.com/questions/17506753/verify-if-two-lists-share-values-in-c-sharp
-  public static bool VerifyIfCardSubsetsShareCards(List<List<Card>> cardSubsets) {
+  private static bool VerifyIfCardSubsetsShareCards(List<List<Card>> cardSubsets) {
     return cardSubsets[0].Intersect(cardSubsets[1]).Any();
   }
 

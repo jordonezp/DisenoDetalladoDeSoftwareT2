@@ -33,7 +33,7 @@ public class CardsCollection {
   public void Remove(Card card) {
     Cards.Remove(card);
   }
-
+  
   public List<Card> GetCards() {
     return Cards; 
   }

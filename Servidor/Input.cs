@@ -19,7 +19,7 @@ public class Input {
     }
     return input;
   }
-  public static bool IsInRange(int value, int max) {
+  private static bool IsInRange(int value, int max) {
     if (value < 0 || value >= max) {
       return false;
     } else {

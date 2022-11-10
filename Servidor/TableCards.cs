@@ -7,13 +7,13 @@ public class TableCards : CardsCollection  {
     List<List<Card>> cardSubsetsThatAddUpTo15 = FindCardSubsetsThatAddUpTo15(cardSubsets);
     return cardSubsetsThatAddUpTo15;
   }
-  public List<List<Card>> GetCardSubsets() {
+  private List<List<Card>> GetCardSubsets() {
     List<List<Card>> cardSubsets = new List<List<Card>>();
     FindCardSubsetsRecursively(0, new List<Card>(), cardSubsets);
     return cardSubsets;
   }
   // Method based on code from: https://www.geeksforgeeks.org/backtracking-to-find-all-subsets/
-  public void FindCardSubsetsRecursively(int index, List<Card> currentCardSubset, List<List<Card>> cardSubsets) {
+  private void FindCardSubsetsRecursively(int index, List<Card> currentCardSubset, List<List<Card>> cardSubsets) {
     // Base Condition
     if (index == Cards.Count) {
       cardSubsets.Add(currentCardSubset);
@@ -25,7 +25,7 @@ public class TableCards : CardsCollection  {
     currentCardSubset.Add(Cards[index]);
     FindCardSubsetsRecursively(index + 1, new List<Card>(currentCardSubset), cardSubsets);
   }
-  public List<List<Card>> FindCardSubsetsThatAddUpTo15(List<List<Card>> cardSubsets) {
+  private List<List<Card>> FindCardSubsetsThatAddUpTo15(List<List<Card>> cardSubsets) {
     List<List<Card>> cardSubsetsThatAddUpTo15 = new List<List<Card>>();
     foreach(List<Card> subset in cardSubsets) {
       if (DoCardsAddUpTo15(subset)) {

@@ -3,15 +3,13 @@ namespace Servidor;
 public class Player { 
   private Hand _hand;
   private int _id;
-  private static int _currentId = -1;
   private int _points;
   private int _scoreToWin;
   private CardsCollection _cardsClaimedRound;
 
-  public Player() {
+  public Player(int id) {
+    _id = id;
     _points = 0;
-    _currentId++;
-    _id = _currentId;
     _scoreToWin = 16; 
     _hand = new Hand();
     _cardsClaimedRound = new CardsCollection();
@@ -20,13 +18,16 @@ public class Player {
   public int CountCardsClaimedRound() {
     return _cardsClaimedRound.CountCards();
   }
-  public int CountNumberOfGolds() {
+  public int CountGoldsClaimedRound() {
     return _cardsClaimedRound.CountNumberOfGolds();
   }
-  public int CountNumberOfSevens() {
+  public int CountSevensClaimedRound() {
     return _cardsClaimedRound.CountNumberOfSevens();
   }
-  public int CountHandCards() {
+  public bool HasSevenOfGold() {
+    return _cardsClaimedRound.HasSevenOfGold();
+  }
+  public int CountCardsHand() {
     return _hand.CountCards();
   }
 
@@ -45,10 +46,7 @@ public class Player {
     return _points;
   }
 
-  public bool HasSevenOfGold() {
-    return _cardsClaimedRound.HasSevenOfGold();
-  }
-  public bool HasRunOutOfCards() {
+  public bool HasRunOutOfCardsInHand() {
     if (_hand.CountCards() == 0) {
       return true;
     }
@@ -64,14 +62,14 @@ public class Player {
   public void Claim(List<Card> cards) {
     _cardsClaimedRound.AppendCardList(cards);
   }
-  public Card TakeCard(int choice) {
+  public Card TakeCardFromHand(int choice) {
     return _hand.TakeCard(choice);
   }
   public void DrawCards(int numberOfCards, CardsCollection cardsCollection) {
     _hand.TakeCards(numberOfCards, cardsCollection);
   }
 
-  public int GetNumber() {
+  public int GetId() {
     return _id;
   }
   public Hand GetHand() {

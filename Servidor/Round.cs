@@ -31,21 +31,21 @@ public class Round {
     return _players;
   }
 
-  public void RoundPreparations() {
+  private void RoundPreparations() {
     DealCards();
     SetCardsOnTableCenter();
     VerifyIfEscobasAtDeal();
     _view.PrintSeparator();
   }
-  public void DealCards() {
+  private void DealCards() {
     foreach(Player player in _players) {
       player.DrawCards(3, _deck);
     }
   }
-  public void SetCardsOnTableCenter() {
+  private void SetCardsOnTableCenter() {
     _tableCards.TakeCards(4, _deck);
   }
-  public void VerifyIfEscobasAtDeal() {
+  private void VerifyIfEscobasAtDeal() {
     List<List<Card>> cardSubsets = _tableCards.GetCardSubsetsThatAddUpTo15();
     Point point = EscobaVerifier.DeterminePointsAtDeal(cardSubsets);
     CardsClaimer cardsClaimer = new CardsClaimer(point, _players[_whoDeals], _tableCards, cardSubsets);
@@ -54,38 +54,38 @@ public class Round {
     }
   }
 
-  public bool HasRoundEnded() {
+  private bool HasRoundEnded() {
     if (HavePlayersRunOutOfCards() && HasDeckBeenDepleted()) {
       return true;
     } else {
       return false;
     }
   }
-  public bool HavePlayersRunOutOfCards() {
-    if (_players[0].HasRunOutOfCards() && _players[1].HasRunOutOfCards()) {
+  private bool HavePlayersRunOutOfCards() {
+    if (_players[0].HasRunOutOfCardsInHand() && _players[1].HasRunOutOfCardsInHand()) {
       return true;
     }
     return false;
   }
-  public bool HasDeckBeenDepleted() {
+  private bool HasDeckBeenDepleted() {
     if (_deck.IsDepleted()) {
       return true;
     }
     return false;
   }
 
-  public void PlayTurn() {
+  private void PlayTurn() {
     TurnPreparations();
     Turn turn = new Turn(_lastPlayerToHaveClaimedCards, _whoPlays, _players[_whoPlays], _view, _tableCards);
     _lastPlayerToHaveClaimedCards = turn.PlayTurn();
   }
-  public void TurnPreparations() {
+  private void TurnPreparations() {
     if (HavePlayersRunOutOfCards() && !HasDeckBeenDepleted()) {
         DealCards();
       }
   }
 
-  public void ChangeWhoPlays() {
+  private void ChangeWhoPlays() {
     if (_whoPlays == 0) {
       _whoPlays = 1;
     } else {
@@ -93,19 +93,19 @@ public class Round {
     }
   }
 
-  public void EndRound() {
+  private void EndRound() {
     _view.PrintRoundEnd(_players[_lastPlayerToHaveClaimedCards]);
     List<Card> cards = _tableCards.CopyCards();
     Point point = EscobaVerifier.DetermineRoundEndPoints(_tableCards, cards);
     UpdateGame(point, cards);
     _view.PrintRoundResults(_players);
   }
-  public void UpdateGame(Point point, List<Card> cards) {
+  private void UpdateGame(Point point, List<Card> cards) {
     CardsClaimer cardsClaimer = new CardsClaimer(point, _players[_whoDeals], _tableCards, new List<List<Card>>() {cards});
     UpdateCardsData(cardsClaimer);
     _players = _pointsAssigner.AssignPointsAtRoundEnd(_players);
   }
-  public void UpdateCardsData(CardsClaimer cardsClaimer) {
+  private void UpdateCardsData(CardsClaimer cardsClaimer) {
     _players[_lastPlayerToHaveClaimedCards] = cardsClaimer.ClaimCardSubsets(); 
     _tableCards = cardsClaimer.RemoveCardSubsets();
   } 

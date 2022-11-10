@@ -14,7 +14,7 @@ public class Game {
     _whoPlays = 1;
     _view = new View();
     _tableCards = new TableCards();
-    _players = new List<Player>() { new Player(), new Player()  };
+    _players = new List<Player>() { new Player(0), new Player(1)  };
   }
 
   public void SimulateEscoba() {
@@ -30,7 +30,7 @@ public class Game {
     EndGame();
   }
 
-  public bool HasAnyPlayerWon() {
+  private bool HasAnyPlayerWon() {
     foreach(Player player in _players) {
       if (player.HasWon()) {
         return true;
@@ -39,23 +39,23 @@ public class Game {
     return false;
   }
 
-  public void PlayRound() {
+  private void PlayRound() {
     _view.PrintRoundStart(_round, _players[_whoDeals]);
     Round round = new Round(_whoDeals, _whoPlays, new Deck(), _tableCards, _view, _players);
     _players = round.PlayRound();
   }
 
-  public void PrepareForNextRound() {
+  private void PrepareForNextRound() {
     ClearPlayersCardsClaimedLastRound();
     InvertPlayersOrder();
     _round++;
   }
-  public void ClearPlayersCardsClaimedLastRound() {
+  private void ClearPlayersCardsClaimedLastRound() {
     foreach (Player player in _players) {
       player.ClearCardsClaimedRound();
     }
   }
-  public int InvertPlayersOrder() {
+  private int InvertPlayersOrder() {
     if (_whoDeals == 0) {
       _whoPlays = 0;
       _whoDeals = 1;
@@ -66,10 +66,10 @@ public class Game {
     return 0;
   }
   
-  public void EndGame() {
+  private void EndGame() {
     _view.PrintGameResults(GetWinner());
   }
-  public GameOutcome GetWinner() {
+  private GameOutcome GetWinner() {
     if (_players[0].GetPoints() > _players[1].GetPoints()) {
       return GameOutcome.Player0Won;
     } else if (_players[0].GetPoints() < _players[1].GetPoints()) {
