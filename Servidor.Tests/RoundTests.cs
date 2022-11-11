@@ -4,6 +4,7 @@ using Servidor;
 namespace Servidor.Tests;
 
 public class RoundTests {
+  
   private InstanceGenerator _instanceGenerator = new InstanceGenerator();
 
   [Fact]

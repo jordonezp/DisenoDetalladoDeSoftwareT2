@@ -4,6 +4,7 @@ using Servidor;
 namespace Servidor.Tests;
 
 public class PlayerTests {
+  
   private InstanceGenerator _instanceGenerator = new InstanceGenerator();
 
   [Fact]
@@ -59,8 +60,7 @@ public class PlayerTests {
 
     int expectedCount = 3;
 
-    Deck deck = _instanceGenerator.Deck();
-    Player player = _instanceGenerator.PlayerWithCardsHand(deck);
+    Player player = _instanceGenerator.PlayerWithCardsHand();
     int cardsHandCount = player.CountCardsHand();
 
     Assert.Equal(expectedCount, cardsHandCount);
@@ -99,8 +99,7 @@ public class PlayerTests {
 
     bool expectedEvaluation = true;
 
-    Deck deck = _instanceGenerator.Deck();
-    Player player = _instanceGenerator.PlayerWithCardsHand(deck);
+    Player player = _instanceGenerator.PlayerWithCardsHand();
     player.TakeCardFromHand(0);
     player.TakeCardFromHand(0);
     player.TakeCardFromHand(0);
@@ -125,27 +124,6 @@ public class PlayerTests {
 
   } 
 
-  [Theory]
-  [InlineData(0)]
-  [InlineData(1)]
-  [InlineData(2)]
-  public void TakeCardFromHand_ReturnsValueOfCardTakenFromPlayerHand(int choice){
-
-    List<Card> cards = new List<Card>() {
-      new Card(Suit.Oro, Value.Uno),
-      new Card(Suit.Oro, Value.Siete),
-      new Card(Suit.Oro, Value.Rey)
-    };
-    int expectedValue = cards[choice].GetValue();
-
-    Deck deck = _instanceGenerator.Deck();
-    Player player = _instanceGenerator.PlayerWithCardsHand(deck);
-    int takenCardValue = player.TakeCardFromHand(choice).GetValue();
-
-    Assert.Equal(expectedValue, takenCardValue);
-
-  }
-
   [Fact]
   public void GetId_ReturnsCorrectPlayerId(){
 
@@ -157,19 +135,5 @@ public class PlayerTests {
     Assert.Equal(expectedId, playerId);
 
   }
-
-  [Fact]
-  public void GetHand_ReturnsCorrectNumberOfCardsInHand(){
-
-    int expectedCount = 3;
-
-    Deck deck = _instanceGenerator.Deck();
-    Player player = _instanceGenerator.PlayerWithCardsHand(deck);
-    int handCardsCount = player.GetHand().CountCards();
-
-    Assert.Equal(expectedCount, handCardsCount);
-
-  }
-
 
 }

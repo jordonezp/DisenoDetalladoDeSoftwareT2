@@ -4,6 +4,7 @@ using Servidor;
 namespace Servidor.Tests;
 
 public class TurnTests {
+  
   private InstanceGenerator _instanceGenerator = new InstanceGenerator();
 
   [Fact]
