@@ -4,8 +4,8 @@ public class View {
   public bool IsSimulated;
   private InputHandler _inputHandler;
 
-  public View() {
-    IsSimulated = false;
+  public View(bool isSimulated = false) {
+    IsSimulated = isSimulated;
     _inputHandler = new InputHandler();
   }
 

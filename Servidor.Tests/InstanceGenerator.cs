@@ -45,4 +45,15 @@ public class InstanceGenerator {
     return player;
   }
 
+  public Round Round() {
+    int whoDeals = 0;
+    int whoPlays = 1;
+    Deck deck = new Deck();
+    View view = new View(true);
+    TableCards tableCards = new TableCards();
+    List<Player> players = new List<Player>() { new Player(0), new Player(1) };
+    Round round = new Round(whoDeals, whoPlays, deck, tableCards, view, players);
+    return round;
+  }
+
 }
