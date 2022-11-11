@@ -19,10 +19,10 @@ public class Player {
     return _cardsClaimedRound.CountCards();
   }
   public int CountGoldsClaimedRound() {
-    return _cardsClaimedRound.CountNumberOfGolds();
+    return _cardsClaimedRound.CountGolds();
   }
   public int CountSevensClaimedRound() {
-    return _cardsClaimedRound.CountNumberOfSevens();
+    return _cardsClaimedRound.CountSevens();
   }
   public bool HasSevenOfGold() {
     return _cardsClaimedRound.HasSevenOfGold();

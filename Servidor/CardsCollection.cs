@@ -45,7 +45,7 @@ public class CardsCollection {
     Cards.Clear();
   }
 
-  public int CountNumberOfSevens() {
+  public int CountSevens() {
     int n = 0;
     foreach(Card card in Cards) {
       if (card.GetValue() == (int)Value.Siete) {
@@ -57,7 +57,7 @@ public class CardsCollection {
   public int CountCards() {
     return Cards.Count;
   }
-  public int CountNumberOfGolds() {
+  public int CountGolds() {
     int n = 0;
     foreach(Card card in Cards) {
       if (card.GetSuit() == Suit.Oro) {

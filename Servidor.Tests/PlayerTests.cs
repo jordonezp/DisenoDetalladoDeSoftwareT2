@@ -34,7 +34,7 @@ public class PlayerTests {
   [Fact]  
   public void CountSevensClaimedRound_ReturnsCorrectNumberOfSevensClaimedByPlayer(){
 
-    int expectedCount = 2;
+    int expectedCount = 1;
 
     Player player = _instanceGenerator.PlayerWithCardsClaimed();
     int sevensClaimedCount = player.CountSevensClaimedRound();

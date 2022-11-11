@@ -42,11 +42,24 @@ public class InstanceGenerator {
     return cardsCollection;
   }
 
+  public List<Player> Players() {
+    Player player0 = PlayerWithCardsClaimed();
+    List<Card> cardsClaimed = new List<Card>() {
+    new Card(Suit.Bastos, Value.Siete),
+    new Card(Suit.Copa, Value.Siete),
+    new Card(Suit.Espada, Value.Siete),
+    };
+    Player player1 = new Player(1);
+    player1.Claim(cardsClaimed);
+    List<Player> players = new List<Player>() { player0, player1 };
+    return players;
+  }
+
   public Player PlayerWithCardsClaimed() {
     List<Card> cardsClaimed = new List<Card>() {
       new Card(Suit.Oro, Value.Cinco),
       new Card(Suit.Oro, Value.Siete),
-      new Card(Suit.Espada, Value.Siete),
+      new Card(Suit.Espada, Value.Sota),
       new Card(Suit.Oro, Value.Dos)
     };
     Player player = new Player(0);
