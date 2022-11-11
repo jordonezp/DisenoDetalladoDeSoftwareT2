@@ -6,20 +6,13 @@ namespace Servidor.Tests;
 public class TurnTests {
   private InstanceGenerator _instanceGenerator = new InstanceGenerator();
 
-  // [Fact]
-  // public void PlayCard_GetsCorrectAmountOfSubsetsThatAddUpTo15() {
+  [Fact]
+  public void PlayTurn_MustRunWithoutErrors() {
 
-  //   int expectedCardSubsetsCount = 2;
+    Turn turn = _instanceGenerator.Turn();
 
-  //   Deck deck = _instanceGenerator.Deck();
-  //   Player player = _instanceGenerator.PlayerWithCardsHand(deck);
-  //   TableCards tableCards = _instanceGenerator.TableCards();
-  //   Turn turn = _instanceGenerator.Turn(player, tableCards);
-  //   EscobaVerifier escobaVerifier = turn.PlayCard(2);  
-  //   int cardSubsetsCount = escobaVerifier.GetCardSubsets().Count;
-
-  //   Assert.Equal(expectedCardSubsetsCount, cardSubsetsCount);
-
-  // } 
+    turn.PlayTurn();
+  
+  } 
 
 }

@@ -56,4 +56,15 @@ public class InstanceGenerator {
     return round;
   }
 
+  public Turn Turn() {
+    int whoPlays = 1;
+    Deck deck = Deck();
+    View view = new View(true);
+    int lastPlayerToHaveClaimedCards = 0;
+    TableCards tableCards = TableCards();
+    Player player = PlayerWithCardsHand(deck);
+    Turn turn = new Turn(whoPlays, lastPlayerToHaveClaimedCards, player, view, tableCards);
+    return turn;
+  }
+
 }
